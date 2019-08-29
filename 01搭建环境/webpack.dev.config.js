@@ -8,6 +8,14 @@ module.exports = {
         path: __dirname,
         filename: './release/bundle.js'
     },
+    module: {
+        // 意思是用bbel-loader检验除node_modules文件夹下的js文件，把es6转化为es5
+        rules: [{
+            test: /\.js?$/,
+            exclude: /(node_modules)/,
+            use: 'babel-loader'
+        }]
+    },
     plugins: [
         // 会把打包之后的文件插入当前配置的模板中运行
         new HtmlWebpackPlugin({

@@ -1,1 +1,12 @@
-console.log(200);
+class Person {
+    constructor (name) {
+        this.name = name;
+    }
+
+    getName() {
+        return this.name
+    }
+}
+
+let p = new Person('dwz');
+console.log(p.getName())
