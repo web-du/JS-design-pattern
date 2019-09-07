@@ -1,72 +1,37 @@
-//1.继承
-// 父类
-class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
+// 工厂模式
 
-    eat() {
-        console.log(`${this.name} eat something`)
+class Product {
+    constructor(name) {
+        this.name = name
     }
-
-    speak() {
-        console.log(`My name is ${this.name}, age ${this.age}`)
+    init() {
+        console.log('init');
     }
-}
-
-// 子类
-class Student extends Person {
-    constructor(name, age, number) {
-        // super:执行父类的构造方法
-        super(name, age)
-        this.number = number
+    func1() {
+        console.log('func1');
     }
-    study() {
-        console.log(`${this.name} study`)
+    func2() {
+        console.log('func2')
     }
 }
 
 
-//实例
-let xiaoming = new Student('xiaoming', 10, 'A1')
-xiaoming.study()
-console.log(xiaoming.number)
-xiaoming.eat()
-
-let xiaohong = new Student('xiaohong', 11, 'A2')
-xiaohong.study()
-xiaohong.speak()
-
-
-
-// jq
-
-class jQuery {
-    constructor(seletor) {
-        let slice  = Array.prototype.slice;
-        // 伪数组转真数组
-        let dom = slice.call(document.querySelectorAll(seletor))
-        let len = dom ? dom.length : 0
-        for (let i = 0; i < len ; i++) {
-            this[i] = dom[i]
-        }
-        this.length = len
-        this.seletor = seletor || ''
-    }
-    append(node) {
-
-    }
-    addClass(name) {
-    }
-    html(data) {
-
+class Create {
+    create(name) {
+        return new Product(name)
     }
 }
 
-window.$ = function(seletor) {
-    return new jQuery(seletor)
-}
 
-var p = $('p');
-console.log(p.constructor)
+// 测试
+let creator = new Create();
+let p = creator.create('p1');
+p.init();
+p.func1();
+
+
+//场景
+
+// jQuery - $('div');
+// React.createElement
+// vue 异步组件
