@@ -62,10 +62,11 @@ LoginForm.getInstance = (function() {
     let islogin
 
     return function () {
-        if (!islogin) {
-            islogin = new LoginForm()
-        }
-        return islogin
+        // if (!islogin) {
+        //     islogin = new LoginForm()
+        // }
+        // return islogin
+        return islogin || (islogin = new LoginForm())
     }
 })()
 
@@ -76,3 +77,5 @@ login1.show();
 
 let login2 = LoginForm.getInstance()
 login2.show();
+
+console.log(login2 === login1)
